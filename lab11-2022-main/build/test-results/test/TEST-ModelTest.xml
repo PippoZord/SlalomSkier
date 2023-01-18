@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-18T15:11:35" hostname="pippozord-Aspire-A515-52G" time="0.062">
+<testsuite name="ModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-01-18T15:21:23" hostname="pippozord-Aspire-A515-52G" time="0.062">
   <properties/>
   <testcase name="ReadFromFileTest" classname="ModelTest" time="0.062"/>
+  <testcase name="addIntTimesTest" classname="ModelTest" time="0.0"/>
   <system-out><![CDATA[time: [57,9800] name: [BRIGNONE Federica]
 time: [59,2400] name: [GASIENICA-DANIEL Maryna]
 time: [59,1900] name: [GISIN Michelle]

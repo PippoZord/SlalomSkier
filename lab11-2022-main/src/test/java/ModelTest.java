@@ -1,5 +1,4 @@
 import it.unimi.di.sweng.slalom.model.Model;
-import org.junit.*;
 import org.junit.Test;
 
 import java.io.File;
@@ -14,6 +13,14 @@ public class ModelTest {
         Model SUT = new Model();
         SUT.readFilePrimaManche(new Scanner(new File("./src/main/resources/first")));
         assertThat(SUT.getState().size()).isEqualTo(15);
+    }
+
+    @Test
+    public void addIntTimesTest() {
+        Model SUT = new Model();
+        SUT.addInTimes("TIZIO CAIO", 56.4);
+        SUT.addInTimes("TIZIO CAIO", 56.2);
+        assertThat(SUT.getState().get("TIZIO CAIO").size()).isEqualTo(2);
     }
 
 }

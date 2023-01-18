@@ -8,8 +8,8 @@ import java.util.*;
 
 public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
 
-  private HashMap<String, LinkedList<Double>> times = new HashMap<>();
-  private List<Observer> observers = new ArrayList<>();
+  private final HashMap<String, LinkedList<Double>> times = new HashMap<>();
+  private final List<Observer> observers = new ArrayList<>();
 
   public void readFilePrimaManche(@NotNull Scanner s) {
 
@@ -20,9 +20,7 @@ public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
       double time = Double.parseDouble(el[1]);
 
       System.out.printf("time: [%g] name: [%s]\n", time, name);
-      LinkedList<Double> tmp = new LinkedList<>();
-      tmp.add(time);
-      times.put(name, tmp);
+      addInTimes(name, time);
     }
   }
 
@@ -39,5 +37,15 @@ public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
   @Override
   public @NotNull HashMap<String, LinkedList<Double>> getState() {
     return times;
+  }
+
+  public void addInTimes(String name, double time){
+    if (times.containsKey(name)) {
+      times.get(name).add(time);
+    } else {
+      LinkedList<Double> tmp = new LinkedList<>();
+      tmp.add(time);
+      times.put(name, tmp);
+    }
   }
 }
