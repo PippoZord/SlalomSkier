@@ -9,7 +9,7 @@ import java.util.*;
 public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
 
   private final HashMap<String, LinkedList<Double>> times = new HashMap<>();
-  private final List<Observer> observers = new ArrayList<>();
+  private final List<Observer<HashMap<String, LinkedList<Double>>>> observers = new ArrayList<>();
 
   public void readFilePrimaManche(@NotNull Scanner s) {
 
@@ -26,12 +26,14 @@ public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
 
   @Override
   public void notifyObservers() {
-
+    for (Observer<HashMap<String, LinkedList<Double>>> obs: observers) {
+      obs.update(this, this.getState());
+    }
   }
 
   @Override
   public void addObserver(@NotNull Observer<HashMap<String, LinkedList<Double>>> obs) {
-
+    observers.add(obs);
   }
 
   @Override
@@ -47,5 +49,6 @@ public class Model implements Observable<HashMap<String, LinkedList<Double>>> {
       tmp.add(time);
       times.put(name, tmp);
     }
+    notifyObservers();
   }
 }
