@@ -1,5 +1,7 @@
 import it.unimi.di.sweng.slalom.Observer;
 import it.unimi.di.sweng.slalom.model.Model;
+import it.unimi.di.sweng.slalom.presenters.FirstViewPresenter;
+import it.unimi.di.sweng.slalom.views.RankView;
 import org.junit.Test;
 
 import java.io.File;
@@ -42,6 +44,5 @@ public class ModelTest {
         verify(obs).update(SUT, SUT.getState());
         verify(obs1).update(SUT, SUT.getState());
     }
-
 
 }

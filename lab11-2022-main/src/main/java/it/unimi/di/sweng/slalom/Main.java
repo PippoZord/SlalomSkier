@@ -2,6 +2,7 @@ package it.unimi.di.sweng.slalom;
 
 
 import it.unimi.di.sweng.slalom.model.Model;
+import it.unimi.di.sweng.slalom.presenters.FirstViewPresenter;
 import it.unimi.di.sweng.slalom.views.NextSkierView;
 import it.unimi.di.sweng.slalom.views.RankView;
 import javafx.application.Application;
@@ -55,13 +56,14 @@ public class Main extends Application {
     Scanner s = new Scanner(is);
     model.readFilePrimaManche(s);
 
-    //TODO creare presenters e fare i collegamenti
+    FirstViewPresenter firstPresenter = new FirstViewPresenter(model, firstRun);
+    model.addObserver(firstPresenter);
+
 
     Scene scene = new Scene(gridPane);
     primaryStage.setScene(scene);
     primaryStage.show();
 
-    //scommentare quando definito model
-    //model.notifyObservers();
+    model.notifyObservers();
   }
 }
