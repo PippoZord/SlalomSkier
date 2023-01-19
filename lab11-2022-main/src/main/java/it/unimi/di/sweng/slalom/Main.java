@@ -3,6 +3,8 @@ package it.unimi.di.sweng.slalom;
 
 import it.unimi.di.sweng.slalom.model.Model;
 import it.unimi.di.sweng.slalom.presenters.FirstViewPresenter;
+import it.unimi.di.sweng.slalom.presenters.NextSkierPresenter;
+import it.unimi.di.sweng.slalom.presenters.SecondManchePresenter;
 import it.unimi.di.sweng.slalom.views.NextSkierView;
 import it.unimi.di.sweng.slalom.views.RankView;
 import javafx.application.Application;
@@ -57,7 +59,11 @@ public class Main extends Application {
     model.readFilePrimaManche(s);
 
     FirstViewPresenter firstPresenter = new FirstViewPresenter(model, firstRun);
+    SecondManchePresenter secondManchePresenter = new SecondManchePresenter(model, secondRun);
+    NextSkierPresenter nextSkierPresenter = new NextSkierPresenter(model,nextSkier, firstRun);
     model.addObserver(firstPresenter);
+    model.addObserver(secondManchePresenter);
+    model.addObserver(nextSkierPresenter);
 
 
     Scene scene = new Scene(gridPane);
